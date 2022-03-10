@@ -6,6 +6,7 @@ package userRegistration;
 * As a User needs to check the regex pattern for the emailId 
 * As a User needs to check the regex pattern for the MobileNumber
 * As a User needs to check the regex pattern rule1  minimum 8 characters
+* As a User needs to check the regex pattern rule2  minimum 1 UperCase Later
 */
 
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class UserRegistration {
 		System.out.print("Enter First Name of User: ");
 		String fName = sc.next();
 		/*
-		 * As a User needs to  check the regex pattern for the firstName
+		 * As a User needs to check the regex pattern for the firstName
 		 */
 		boolean check = Pattern.matches("^[A-Z]{1}+[a-z]{3,}$", fName);
 		if (check)
@@ -32,7 +33,7 @@ public class UserRegistration {
 		System.out.print("Enter Last Name of User: ");
 		String lName = sc.next();
 		/*
-		 * As a User needs to  check the regex pattern for the laststName
+		 * As a User needs to check the regex pattern for the laststName
 		 */
 		boolean check = Pattern.matches("^[A-Z]{1}+[a-z]{3,}$", lName);
 		if (check)
@@ -54,47 +55,63 @@ public class UserRegistration {
 		else
 			System.out.println("Please Enter a Valid Email with Only \"example.abc@bl.co.in\" latter");
 	}
-	
-	 public void mobileNum(){
-	        Scanner sc = new Scanner(System.in);
-	        System.out.print("Enter Mobile number with country code (91)  : " );
-	        String mobileNum = sc.nextLine();
-	        /*
-	         *  As a User needs to check the regex pattern for the MobileNumber
-	         */
-	        boolean check = Pattern.matches("^91\\s[6789][0-9]{9}", mobileNum);
-	        if (check)
-	            System.out.println("Perfect! Mobile #Num");
-	        else
-	            System.out.println("Please Enter a Valid Mobile Num ex:- 90 9686127142");
-	    }
-	 
-	 /*
-	  * / rule1  minimum 8 characters
-	  */
-	    public void passWordRule1(){
-	        Scanner sc = new Scanner(System.in);
-	        System.out.print("Enter password :  ");
-	        String passWord = sc.nextLine();
-	        boolean check = Pattern.matches("[a-zA-Z]{8,}", passWord);
-	        if (check)
-	            System.out.println("Perfect! #password");
-	        else
-	            System.out.println("Please Enter a Valid password, it should have minimum 8 characters");
-	    }
 
+	public void mobileNum() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Mobile number with country code (91)  : ");
+		String mobileNum = sc.nextLine();
+		/*
+		 * As a User needs to check the regex pattern for the MobileNumber
+		 */
+		boolean check = Pattern.matches("^91\\s[6789][0-9]{9}", mobileNum);
+		if (check)
+			System.out.println("Perfect! Mobile #Num");
+		else
+			System.out.println("Please Enter a Valid Mobile Num ex:- 90 9686127142");
+	}
+
+	/*
+	 * / rule1 minimum 8 characters
+	 */
+	public void passWordRule1() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter password :  ");
+		String passWord = sc.nextLine();
+		boolean check = Pattern.matches("[a-zA-Z]{8,}", passWord);
+		if (check)
+			System.out.println("Perfect! #password");
+		else
+			System.out.println("Please Enter a Valid password, it should have minimum 8 characters");
+	}
+
+	/*
+	 *  rule2 minimum 8 characters with minimum 1 UperCase Later
+	 */
+	public void passWordRule2() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter password :  ");
+		String passWord = sc.nextLine();
+		boolean check = Pattern.matches("[A-Z]{1}[a-z]{7,}", passWord);
+		if (check)
+			System.out.println("Perfect! #password");
+		else
+			System.out.println("Please Enter a Valid password, it should have minimum 8 characters with 1 upper case");
+	}
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		UserRegistration user = new UserRegistration();
 
 		System.out.println("Welcome to User Registration Program");
-
+/*
+ * A method Calling (Function)
+ */
 		user.firstNameCheck();
 		user.lastNameCheck();
 		user.email();
 		user.mobileNum();
 		user.passWordRule1();
+		user.passWordRule2();
 
 	}
 }
