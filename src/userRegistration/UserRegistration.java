@@ -3,6 +3,9 @@ package userRegistration;
 /*
  *As a User needs to  check the regex pattern for the firstName
 * As a User needs to check the regex pattern for the latName 
+*  As a User needs to check the regex pattern for the emailId 
+*   As a User needs to check the regex pattern for the MobileNumber
+* 
 */
 
 import java.util.Scanner;
@@ -25,15 +28,12 @@ public class UserRegistration {
 	}
 
 	public void lastNameCheck() {
-		/*
-		 * It will take the input from the User
-		 */
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Last Name of User: ");
 		String lName = sc.next();
-/*
- * As a User needs to  check the regex pattern for the lastName
- */
+		/*
+		 * As a User needs to  check the regex pattern for the laststName
+		 */
 		boolean check = Pattern.matches("^[A-Z]{1}+[a-z]{3,}$", lName);
 		if (check)
 			System.out.println("Perfect! Last #Name");
@@ -41,14 +41,45 @@ public class UserRegistration {
 			System.out.println("Please Enter a Valid Last Name with Only \"One Starting Capital\" latter");
 	}
 
+	public void email() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Email of User: ");
+		String eMail = sc.next();
+		/*
+		 * As a User needs to check the regex pattern for the emailId
+		 */
+		boolean check = Pattern.matches("^[a-z]*([.]?[a-z]+)*@bl[.]co([.]?in)*", eMail);
+		if (check)
+			System.out.println("Perfect! #Email!");
+		else
+			System.out.println("Please Enter a Valid Email with Only \"example.abc@bl.co.in\" latter");
+	}
+	
+	 public void mobileNum(){
+	        Scanner sc = new Scanner(System.in);
+	        System.out.print("Enter Mobile number with country code (91)  : " );
+	        String mobileNum = sc.nextLine();
+	        /*
+	         *  As a User needs to check the regex pattern for the MobileNumber
+	         */
+	        boolean check = Pattern.matches("^91\\s[6789][0-9]{9}", mobileNum);
+	        if (check)
+	            System.out.println("Perfect! Mobile #Num");
+	        else
+	            System.out.println("Please Enter a Valid Mobile Num ex:- 90 9686127142");
+	    }
+
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		UserRegistration user = new UserRegistration();
 
-		System.err.println("Welcome to User Registration Program");
+		System.out.println("Welcome to User Registration Program");
 
 		user.firstNameCheck();
 		user.lastNameCheck();
+		user.email();
+		user.mobileNum();
 
 	}
 }
