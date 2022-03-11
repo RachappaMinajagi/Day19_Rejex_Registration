@@ -7,6 +7,8 @@ package userRegistration;
 * As a User needs to check the regex pattern for the MobileNumber
 * As a User needs to check the regex pattern rule1  minimum 8 characters
 * As a User needs to check the regex pattern rule2  minimum 1 UperCase Later
+* As a User needs to check the regex pattern rule3 1 Numeric Number.
+* As a User needs to check the regex pattern rule4 1 Special character
 */
 
 import java.util.Scanner;
